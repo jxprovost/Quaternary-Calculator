@@ -8,6 +8,7 @@ public class UserInterface {
     static String input = "";
     static int toggleValue = 0;
     static String toggle = "quat";
+    static JTextField calcDisplay;
 
     //Ideally these two lines would be in a separate interface class.
     //Calculator calculator = new Calculator();
@@ -27,6 +28,7 @@ public class UserInterface {
         window.setPreferredSize(new Dimension(600, 100));
         JTextField display;
         window.add(display = new JTextField(number_of_digits));
+        calcDisplay = display;
         display.setEditable(false);
 
 
@@ -207,8 +209,7 @@ public class UserInterface {
     static class ListenZero implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             input += "0";
-            //replace line with actual actual code
-
+            calcDisplay.setText(calcDisplay.getText()+" 0");
             System.out.println(input);
         }
     }
@@ -216,7 +217,7 @@ public class UserInterface {
     static class ListenOne implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             input += "1";
-            //replace line with actual actual code
+            calcDisplay.setText(calcDisplay.getText()+" 1");
             System.out.println(input);
         }
     }
@@ -224,7 +225,7 @@ public class UserInterface {
     static class ListenTwo implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             input += "2";
-            //replace line with actual actual code
+            calcDisplay.setText(calcDisplay.getText()+" 2");
             System.out.println(input);
         }
     }
@@ -232,7 +233,7 @@ public class UserInterface {
     static class ListenThree implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             input += "3";
-            //replace line with actual actual code
+            calcDisplay.setText(calcDisplay.getText()+" 3");
             System.out.println(input);
         }
     }
@@ -243,7 +244,7 @@ public class UserInterface {
                 if (input.charAt(input.length() - 1) != '+' && input.charAt(input.length() - 1) != '-' && input.charAt(input.length() - 1) != '*'
                         && input.charAt(input.length() - 1) != '/')
                     input += "+";}
-            //replace line with actual actual code
+            calcDisplay.setText(calcDisplay.getText()+" +");
             System.out.println(input);
         }
     }
@@ -254,7 +255,7 @@ public class UserInterface {
                 if (input.charAt(input.length() - 1) != '+' && input.charAt(input.length() - 1) != '-' && input.charAt(input.length() - 1) != '*'
                         && input.charAt(input.length() - 1) != '/')
                     input += "-";}
-            //replace line with actual actual code
+            calcDisplay.setText(calcDisplay.getText()+" -");
             System.out.println(input);
         }
     }
@@ -265,7 +266,7 @@ public class UserInterface {
                 if (input.charAt(input.length() - 1) != '+' && input.charAt(input.length() - 1) != '-' && input.charAt(input.length() - 1) != '*'
                         && input.charAt(input.length() - 1) != '/')
                     input += "*";}
-            //replace line with actual actual code
+            calcDisplay.setText(calcDisplay.getText()+" *");
             System.out.println(input);
         }
     }
@@ -276,7 +277,7 @@ public class UserInterface {
                 if (input.charAt(input.length() - 1) != '+' && input.charAt(input.length() - 1) != '-' && input.charAt(input.length() - 1) != '*'
                         && input.charAt(input.length() - 1) != '/')
                     input += "/";}
-            //replace line with actual actual code
+            calcDisplay.setText(calcDisplay.getText()+" /");
             System.out.println(input);
         }
     }
@@ -286,6 +287,7 @@ public class UserInterface {
             if (!input.equals("")){
                 Calculator calculate = new Calculator();
                 if (input.charAt(input.length() - 1) != '=')
+                    calcDisplay.setText(calcDisplay.getText()+" =");
                     System.out.println(calculate.splitInput(input));
                 input = "";
             }
@@ -294,13 +296,13 @@ public class UserInterface {
 
     static class ListenSquare implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-
+        calcDisplay.setText(calcDisplay.getText()+" ^2");
         }
     }
 
     static class ListenSquareRoot implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-
+        calcDisplay.setText(calcDisplay.getText()+" √");
         }
     }
 
@@ -328,6 +330,7 @@ public class UserInterface {
             input = "";
             toggleValue = 0;
             toggle = "quat";
+            calcDisplay.setText(calcDisplay.getText()+" ");
             System.out.println();
         }
     }
