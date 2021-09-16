@@ -1,3 +1,12 @@
+# Quaternary Calculator: Team 2
+## Calculator Manual:
+
+## Project Screenshots:
+
+## Task Distribution:
+Andrew = logic side basic operations (addition, subtraction, multiplication, division), logic side unit-tests<br>
+Janardhen = logic side single number operations (square, square root)
+
 ## Meetings:
 ### Saturday, September 11 - 9:00pm, Zoom
 #### Attendees:
