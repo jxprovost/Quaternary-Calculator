@@ -6,9 +6,11 @@ import java.awt.event.ActionListener;
 
 public class UserInterface {
     static String input = "";
+    static int toggleValue = 0;
+    static String toggle = "quat";
 
     //Ideally these two lines would be in a separate interface class.
-    Calculator calculator = new Calculator();
+    //Calculator calculator = new Calculator();
     final static int number_of_digits = 8;
 
     public static void main(String[] args) {
@@ -27,9 +29,6 @@ public class UserInterface {
         window.add(display = new JTextField(number_of_digits));
         display.setEditable(false);
 
-        //
-
-        //JOptionPane window = new JOptionPane();
 
 
         //4 Button Panel
@@ -128,8 +127,9 @@ public class UserInterface {
 
 
 
+
         // "=" (SOUTH)
-        Dimension bottomButtons = new Dimension(260, 60);
+        Dimension bottomButtons = new Dimension(220, 40);
 
         JPanel panel_equals = new JPanel();
         JButton button_equals = new JButton(" = ");
@@ -152,10 +152,22 @@ public class UserInterface {
         toggle_panel.setLayout(new GridLayout(1, 1));
         toggle_panel.add(panel_toggle);
 
-        JPanel bottomPanel = new JPanel();
-        bottomPanel.add(equal_panel);
-        bottomPanel.add(toggle_panel);
+        //Clear
+        JButton button_clear = new JButton("Clear");
+        button_clear.setPreferredSize(bottomButtons);
+        JPanel clear_panel = new JPanel();
+        toggle_panel.setLayout(new GridLayout(1, 1));
+        toggle_panel.add(panel_toggle);
+        clear_panel.add(button_clear);
 
+
+
+        JPanel bottomPanel = new JPanel();
+        bottomPanel.add(clear_panel);
+        bottomPanel.add(toggle_panel);
+        bottomPanel.add(equal_panel);
+
+        button_clear.addActionListener(new ListenClear());
         button_toggle.addActionListener(new ListenToggle());
 
 
@@ -174,18 +186,9 @@ public class UserInterface {
         button_div.setFont(operationsFont);
         button_equals.setFont(lowerButtonsFont);
         button_toggle.setFont(lowerButtonsFont);
+        button_clear.setFont(lowerButtonsFont);
         squareRootButton.setFont(leftButtonsFont);
         squareButton.setFont(leftButtonsFont);
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -203,8 +206,9 @@ public class UserInterface {
 
     static class ListenZero implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-           input += "0";
+            input += "0";
             //replace line with actual actual code
+
             System.out.println(input);
         }
     }
@@ -215,10 +219,9 @@ public class UserInterface {
             //replace line with actual actual code
             System.out.println(input);
         }
-
     }
 
-     static class ListenTwo implements ActionListener {
+    static class ListenTwo implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             input += "2";
             //replace line with actual actual code
@@ -226,23 +229,25 @@ public class UserInterface {
         }
     }
 
-     static class ListenThree implements ActionListener {
+    static class ListenThree implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             input += "3";
             //replace line with actual actual code
             System.out.println(input);
         }
     }
+
     static class ListenAdd implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             if (!input.equals("")){
                 if (input.charAt(input.length() - 1) != '+' && input.charAt(input.length() - 1) != '-' && input.charAt(input.length() - 1) != '*'
-                && input.charAt(input.length() - 1) != '/')
-                input += "+";}
+                        && input.charAt(input.length() - 1) != '/')
+                    input += "+";}
             //replace line with actual actual code
             System.out.println(input);
         }
     }
+
     static class ListenSub implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             if (!input.equals("")){
@@ -253,6 +258,7 @@ public class UserInterface {
             System.out.println(input);
         }
     }
+
     static class ListenMul implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             if (!input.equals("")){
@@ -263,6 +269,7 @@ public class UserInterface {
             System.out.println(input);
         }
     }
+
     static class ListenDiv implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             if (!input.equals("")){
@@ -274,55 +281,54 @@ public class UserInterface {
         }
     }
 
-
     static class ListenEqual implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             if (!input.equals("")){
                 Calculator calculate = new Calculator();
                 if (input.charAt(input.length() - 1) != '=')
                     System.out.println(calculate.splitInput(input));
-                    input = "";
+                input = "";
             }
-        }
-    }
-
-    static class ListenToggle implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-           // if (!input.equals("")){
-               // Calculator calculate = new Calculator();
-                //if (input.charAt(input.length() - 1) != '=')
-                    //if (input)
-                    //System.out.println(calculate.splitInput(input));
-           // }
-            //System.out.println(input);
-        }
-    }
-
-
-    static class ListenSquareRoot implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            if (!input.equals("")){ input += "^2";
-                Calculator calculate = new Calculator();
-                System.out.println(calculate.squareRoot(input));
-            }
-            //replace line with actual actual code
-            System.out.println(input);
         }
     }
 
     static class ListenSquare implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            if (!input.equals("")){ input += "^2";
-                Calculator calculate = new Calculator();
-                System.out.println(calculate.square(input));
-            }
-            //replace line with actual actual code
-            System.out.println(input);
+
         }
     }
 
+    static class ListenSquareRoot implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
 
+        }
+    }
 
+    static class ListenToggle implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            if (!input.equals("")) {
+                if (!(input.contains("+") || input.contains("-") || input.contains("*")|| input.contains("/")))  {
+                    Calculator calculate = new Calculator();
+                    if (toggle.equals("quat")) {
+                        toggle = "deci";
+                        toggleValue = calculate.quatToDeci(input);
+                        System.out.println(toggleValue);
+                    } else if (toggle.equals("deci")) {
+                        toggle = "quat";
+                        input = calculate.deciToQuat(toggleValue);
+                        System.out.println(input);
+                    }
+                }
+            }
+        }
+    }
 
-
+    static class ListenClear implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            input = "";
+            toggleValue = 0;
+            toggle = "quat";
+            System.out.println();
+        }
+    }
 }
