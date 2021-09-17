@@ -9,6 +9,7 @@ public class UserInterface {
     static int toggleValue = 0;
     static String toggle = "quat";
     static JTextField calcDisplay;
+    static String enterNum = "YesEnter";
 
     //Ideally these two lines would be in a separate interface class.
     //Calculator calculator = new Calculator();
@@ -208,6 +209,7 @@ public class UserInterface {
 
     static class ListenZero implements ActionListener {
         public void actionPerformed(ActionEvent e) {
+            numberAfterOperation();
             input += "0";
             calcDisplay.setText(calcDisplay.getText()+" 0");
             System.out.println(input);
@@ -216,6 +218,7 @@ public class UserInterface {
 
     static class ListenOne implements ActionListener {
         public void actionPerformed(ActionEvent e) {
+            numberAfterOperation();
             input += "1";
             calcDisplay.setText(calcDisplay.getText()+" 1");
             System.out.println(input);
@@ -224,6 +227,7 @@ public class UserInterface {
 
     static class ListenTwo implements ActionListener {
         public void actionPerformed(ActionEvent e) {
+            numberAfterOperation();
             input += "2";
             calcDisplay.setText(calcDisplay.getText()+" 2");
             System.out.println(input);
@@ -232,6 +236,7 @@ public class UserInterface {
 
     static class ListenThree implements ActionListener {
         public void actionPerformed(ActionEvent e) {
+            numberAfterOperation();
             input += "3";
             calcDisplay.setText(calcDisplay.getText()+" 3");
             System.out.println(input);
@@ -240,10 +245,13 @@ public class UserInterface {
 
     static class ListenAdd implements ActionListener {
         public void actionPerformed(ActionEvent e) {
+            fixDecimalOperation();
             if (!input.equals("")){
-                if (input.charAt(input.length() - 1) != '+' && input.charAt(input.length() - 1) != '-' && input.charAt(input.length() - 1) != '*'
-                        && input.charAt(input.length() - 1) != '/')
-                    input += "+";}
+                if (input.charAt(input.length() - 1) != '+' && input.charAt(input.length() - 1) != '-'
+                        && input.charAt(input.length() - 1) != '*' && input.charAt(input.length() - 1) != '/')
+                    input += "+";
+                    enterNum = "YesEnter";
+            }
             calcDisplay.setText(calcDisplay.getText()+" +");
             System.out.println(input);
         }
@@ -251,10 +259,13 @@ public class UserInterface {
 
     static class ListenSub implements ActionListener {
         public void actionPerformed(ActionEvent e) {
+            fixDecimalOperation();
             if (!input.equals("")){
-                if (input.charAt(input.length() - 1) != '+' && input.charAt(input.length() - 1) != '-' && input.charAt(input.length() - 1) != '*'
-                        && input.charAt(input.length() - 1) != '/')
-                    input += "-";}
+                if (input.charAt(input.length() - 1) != '+' && input.charAt(input.length() - 1) != '-'
+                        && input.charAt(input.length() - 1) != '*' && input.charAt(input.length() - 1) != '/')
+                    input += "-";
+                    enterNum = "YesEnter";
+            }
             calcDisplay.setText(calcDisplay.getText()+" -");
             System.out.println(input);
         }
@@ -262,10 +273,13 @@ public class UserInterface {
 
     static class ListenMul implements ActionListener {
         public void actionPerformed(ActionEvent e) {
+            fixDecimalOperation();
             if (!input.equals("")){
-                if (input.charAt(input.length() - 1) != '+' && input.charAt(input.length() - 1) != '-' && input.charAt(input.length() - 1) != '*'
-                        && input.charAt(input.length() - 1) != '/')
-                    input += "*";}
+                if (input.charAt(input.length() - 1) != '+' && input.charAt(input.length() - 1) != '-'
+                        && input.charAt(input.length() - 1) != '*' && input.charAt(input.length() - 1) != '/')
+                    input += "*";
+                    enterNum = "YesEnter";
+            }
             calcDisplay.setText(calcDisplay.getText()+" *");
             System.out.println(input);
         }
@@ -273,10 +287,14 @@ public class UserInterface {
 
     static class ListenDiv implements ActionListener {
         public void actionPerformed(ActionEvent e) {
+            fixDecimalOperation();
             if (!input.equals("")){
-                if (input.charAt(input.length() - 1) != '+' && input.charAt(input.length() - 1) != '-' && input.charAt(input.length() - 1) != '*'
-                        && input.charAt(input.length() - 1) != '/')
-                    input += "/";}
+                if (input.charAt(input.length() - 1) != '+' && input.charAt(input.length() - 1) != '-'
+                        && input.charAt(input.length() - 1) != '*' && input.charAt(input.length() - 1) != '/')
+                    input += "/";
+                    enterNum = "YesEnter";
+
+            }
             calcDisplay.setText(calcDisplay.getText()+" /");
             System.out.println(input);
         }
@@ -286,23 +304,50 @@ public class UserInterface {
         public void actionPerformed(ActionEvent e) {
             if (!input.equals("")){
                 Calculator calculate = new Calculator();
-                if (input.charAt(input.length() - 1) != '=')
-                    calcDisplay.setText(calcDisplay.getText()+" =");
-                    System.out.println(calculate.splitInput(input));
-                input = "";
+                if (input.charAt(input.length() - 1) != '=') {
+                    calcDisplay.setText(calcDisplay.getText() + " =");
+                    String answerOutput = String.valueOf(calculate.splitInput(input));
+                    calcDisplay.setText(answerOutput);
+                    input = answerOutput;
+                    System.out.println(input);
+                    enterNum = "NoEnter";
+                }
             }
         }
     }
 
     static class ListenSquare implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-        calcDisplay.setText(calcDisplay.getText()+" ^2");
+            fixDecimalOperation();
+        //calcDisplay.setText(calcDisplay.getText()+"^2");
+            if (!input.equals("")) {
+                Calculator calculate = new Calculator();
+                if (input.charAt(input.length() - 1) != '+' && input.charAt(input.length() - 1) != '-'
+                        && input.charAt(input.length() - 1) != '*' && input.charAt(input.length() - 1) != '/') {
+                    if (!(input.contains("+") || input.contains("-") || input.contains("*")|| input.contains("/"))) {
+                        calcDisplay.setText(String.valueOf(calculate.square(input)));
+                        input = String.valueOf(calculate.square(input));
+                        System.out.println(input);
+                        enterNum = "NoEnter";
+                    }
+                }
+            }
         }
     }
 
     static class ListenSquareRoot implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-        calcDisplay.setText(calcDisplay.getText()+" √");
+        //calcDisplay.setText(calcDisplay.getText()+" √");
+            if (!input.equals("")) {
+                Calculator calculate = new Calculator();
+                if (input.charAt(input.length() - 1) != '+' && input.charAt(input.length() - 1) != '-'
+                        && input.charAt(input.length() - 1) != '*' && input.charAt(input.length() - 1) != '/'){
+                    calcDisplay.setText(String.valueOf(calculate.squareRoot(input)));
+                    input = String.valueOf(calculate.squareRoot(input));
+                    System.out.println(calculate.squareRoot(input));
+                    enterNum = "NoEnter";
+                }
+            }
         }
     }
 
@@ -314,11 +359,16 @@ public class UserInterface {
                     if (toggle.equals("quat")) {
                         toggle = "deci";
                         toggleValue = calculate.quatToDeci(input);
-                        System.out.println(toggleValue);
+                        calcDisplay.setText(String.valueOf(toggleValue));
+                        input = String.valueOf(toggleValue);
+                        System.out.println(input);
+                        enterNum = "NoEnter";
                     } else if (toggle.equals("deci")) {
                         toggle = "quat";
                         input = calculate.deciToQuat(toggleValue);
+                        calcDisplay.setText(input);
                         System.out.println(input);
+                        enterNum = "NoEnter";
                     }
                 }
             }
@@ -330,8 +380,32 @@ public class UserInterface {
             input = "";
             toggleValue = 0;
             toggle = "quat";
-            calcDisplay.setText(calcDisplay.getText()+" ");
+            //calcDisplay.setText(calcDisplay.getText().replaceAll(String.valueOf(calcDisplay), ""));
+            calcDisplay.setText("");
             System.out.println();
         }
     }
-}
+
+    public static void fixDecimalOperation() {
+        // If someone tries to perform an operation while the toggle state is set to decimal
+        Calculator calculate = new Calculator();
+        if (toggle.equals("deci")) {
+            toggle = "quat";
+            enterNum = "YesEnter";
+            input = calculate.deciToQuat(toggleValue);
+            calcDisplay.setText(input);
+            System.out.println(input);
+
+        }
+    }
+
+    // Set it up so that if a number is entered after performing an operation... it starts a new operation
+    public static void numberAfterOperation() {
+        if (enterNum.equals("NoEnter")){
+            input = "";
+            calcDisplay.setText(input);
+            enterNum = "YesEnter";
+        }
+    }
+
+    }
