@@ -1,6 +1,9 @@
 # Quaternary Calculator: Team 2
 ## Calculator Manual:
-
+This is a calculator that performs calculations in the quaternary number system. Click the buttons corresponding to the numbers and operations you need. This calculator supports 
+addition, subtraction, multiplication, division, square and square root. In addition, the toggle button can be used to display the decimal equivalent of whatever quaternary 
+number is currenty displayed. The clear button is used to clear what's on the display. This calculator does not offer support for negative numbers. If you end up with a negative
+result, you will need to hit the clear button before performing any additional calculations. 
 ## Project Screenshots:
 
 ## Task Distribution:
@@ -8,8 +11,8 @@ Andrew = logic side basic operations (addition, subtraction, multiplication, div
 Janardhen = logic side single number operations (square, square root)
 
 Jaren = UI side (positioning, setup, and development)
-
 Kyler = UI side (displaying numbers and operators)
+Jacob = UI side (implemented action listeners on buttons, set up buttons to generate input string)
 
 ## Meetings:
 ### Saturday, September 11 - 9:00pm, Zoom
