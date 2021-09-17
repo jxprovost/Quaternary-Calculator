@@ -41,3 +41,13 @@ Nicole = UI side (sqr and sqrt buttons, and classes) <br>
 #### Discussed:
 - Logic functions for calculator
 - Connecting these to the UI side
+
+#### Wednesday, September 15 - 4:00pm, Zoom 
+#### Attendees:
+- Nicole Gerber
+- Jacob Cecil
+
+#### Discussed:
+- UI buttons 
+- UI Classes 
+- Sqr and Sqrt
