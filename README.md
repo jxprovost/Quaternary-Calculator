@@ -7,6 +7,9 @@ result, you will need to hit the clear button before performing any additional c
 ## Project Screenshots:
 
 ![alt text](https://github.com/jxprovost/Quaternary-Calculator/blob/main/Screenshots/QuaternaryCalc1.jpg)
+![alt text](https://github.com/jxprovost/Quaternary-Calculator/blob/main/Screenshots/QuaternaryCalc2.jpg)
+![alt text](https://github.com/jxprovost/Quaternary-Calculator/blob/main/Screenshots/QuaternaryCalc3.jpg)
+![alt text](https://github.com/jxprovost/Quaternary-Calculator/blob/main/Screenshots/QuaternaryCalc4.jpg)
 
 ## Task Distribution:
 Andrew = logic side basic operations (addition, subtraction, multiplication, division), logic side unit-tests<br>
