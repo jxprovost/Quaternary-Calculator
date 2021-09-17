@@ -6,7 +6,7 @@ number is currenty displayed. The clear button is used to clear what's on the di
 result, you will need to hit the clear button before performing any additional calculations. 
 ## Project Screenshots:
 
-![alt text] (https://github.com/jxprovost/Quaternary-Calculator/blob/main/Screenshots/QuaternaryCalc1.jpg)
+![alt text](https://github.com/jxprovost/Quaternary-Calculator/blob/main/Screenshots/QuaternaryCalc1.jpg)
 
 ## Task Distribution:
 Andrew = logic side basic operations (addition, subtraction, multiplication, division), logic side unit-tests<br>
