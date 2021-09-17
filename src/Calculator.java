@@ -83,7 +83,13 @@ public class Calculator {
                 System.out.println("Invalid operation");
         }
         String resultString = deciToQuat(result);
-        return Integer.parseInt(resultString);
+        int returnResult;
+        if (resultString.equals(""))
+            returnResult = 0;
+        else
+            returnResult = Integer.parseInt(resultString);
+        System.out.println(returnResult);
+        return returnResult;
 
     }
 
