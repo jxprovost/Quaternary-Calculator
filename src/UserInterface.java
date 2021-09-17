@@ -229,12 +229,15 @@ public class UserInterface {
         public void actionPerformed(ActionEvent e) {
             fixDecimalOperation();
             if (!input.equals("")){
-                if (input.charAt(input.length() - 1) != '+' && input.charAt(input.length() - 1) != '-'
-                        && input.charAt(input.length() - 1) != '*' && input.charAt(input.length() - 1) != '/')
-                    input += "+";
-                    enterNum = "YesEnter";
+                if ((input.charAt(input.length() - 1) != '+' && input.charAt(input.length() - 1) != '-'
+                        && input.charAt(input.length() - 1) != '*' && input.charAt(input.length() - 1) != '/')) {
+                    if (!(input.contains("+") || input.contains("-") || input.contains("*") || input.contains("/"))){
+                        input += "+";
+                        enterNum = "YesEnter";
+                        calcDisplay.setText(calcDisplay.getText() + " +");
+                    }
+                }
             }
-            calcDisplay.setText(calcDisplay.getText()+" +");
         }
     }
 
@@ -243,11 +246,14 @@ public class UserInterface {
             fixDecimalOperation();
             if (!input.equals("")){
                 if (input.charAt(input.length() - 1) != '+' && input.charAt(input.length() - 1) != '-'
-                        && input.charAt(input.length() - 1) != '*' && input.charAt(input.length() - 1) != '/')
-                    input += "-";
-                    enterNum = "YesEnter";
+                        && input.charAt(input.length() - 1) != '*' && input.charAt(input.length() - 1) != '/'){
+                    if (!(input.contains("+") || input.contains("-") || input.contains("*") || input.contains("/"))){
+                        input += "-";
+                        enterNum = "YesEnter";
+                        calcDisplay.setText(calcDisplay.getText()+" -");
+                    }
+                }
             }
-            calcDisplay.setText(calcDisplay.getText()+" -");
         }
     }
 
@@ -256,12 +262,14 @@ public class UserInterface {
             fixDecimalOperation();
             if (!input.equals("")){
                 if (input.charAt(input.length() - 1) != '+' && input.charAt(input.length() - 1) != '-'
-                        && input.charAt(input.length() - 1) != '*' && input.charAt(input.length() - 1) != '/')
-                    input += "*";
-                    enterNum = "YesEnter";
+                        && input.charAt(input.length() - 1) != '*' && input.charAt(input.length() - 1) != '/'){
+                    if (!(input.contains("+") || input.contains("-") || input.contains("*") || input.contains("/"))){
+                        input += "*";
+                        enterNum = "YesEnter";
+                        calcDisplay.setText(calcDisplay.getText()+" *");
+                    }
+                }
             }
-            calcDisplay.setText(calcDisplay.getText()+" *");
-
         }
     }
 
@@ -270,13 +278,14 @@ public class UserInterface {
             fixDecimalOperation();
             if (!input.equals("")){
                 if (input.charAt(input.length() - 1) != '+' && input.charAt(input.length() - 1) != '-'
-                        && input.charAt(input.length() - 1) != '*' && input.charAt(input.length() - 1) != '/')
-                    input += "/";
-                    enterNum = "YesEnter";
-
+                        && input.charAt(input.length() - 1) != '*' && input.charAt(input.length() - 1) != '/') {
+                    if (!(input.contains("+") || input.contains("-") || input.contains("*") || input.contains("/"))) {
+                        input += "/";
+                        enterNum = "YesEnter";
+                        calcDisplay.setText(calcDisplay.getText()+" /");
+                    }
+                }
             }
-            calcDisplay.setText(calcDisplay.getText()+" /");
-
         }
     }
 
@@ -298,7 +307,7 @@ public class UserInterface {
     static class ListenSquare implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             fixDecimalOperation();
-        //calcDisplay.setText(calcDisplay.getText()+"^2");
+            //calcDisplay.setText(calcDisplay.getText()+"^2");
             if (!input.equals("")) {
                 Calculator calculate = new Calculator();
                 if (input.charAt(input.length() - 1) != '+' && input.charAt(input.length() - 1) != '-'
@@ -315,7 +324,7 @@ public class UserInterface {
 
     static class ListenSquareRoot implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-        //calcDisplay.setText(calcDisplay.getText()+" √");
+            //calcDisplay.setText(calcDisplay.getText()+" √");
             if (!input.equals("")) {
                 Calculator calculate = new Calculator();
                 if (input.charAt(input.length() - 1) != '+' && input.charAt(input.length() - 1) != '-'
@@ -367,7 +376,6 @@ public class UserInterface {
             enterNum = "YesEnter";
             input = calculate.deciToQuat(toggleValue);
             calcDisplay.setText(input);
-
         }
     }
 
@@ -379,5 +387,4 @@ public class UserInterface {
             enterNum = "YesEnter";
         }
     }
-
-    }
+}
