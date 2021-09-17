@@ -6,12 +6,16 @@ number is currenty displayed. The clear button is used to clear what's on the di
 result, you will need to hit the clear button before performing any additional calculations. 
 ## Project Screenshots:
 
+![alt text] (https://github.com/jxprovost/Quaternary-Calculator/blob/main/Screenshots/QuaternaryCalc1.jpg)
+
 ## Task Distribution:
 Andrew = logic side basic operations (addition, subtraction, multiplication, division), logic side unit-tests<br>
 Janardhen = logic side single number operations (square, square root)
 
 Jaren = UI side (positioning, setup, and development)
+
 Kyler = UI side (displaying numbers and operators)
+
 Jacob = UI side (implemented action listeners on buttons, set up buttons to generate input string)
 
 ## Meetings:
