@@ -9,9 +9,6 @@ public class UserInterface {
     static String toggle = "quat";
     static JTextField calcDisplay;
     static String enterNum = "YesEnter";
-
-    //Ideally these two lines would be in a separate interface class.
-    //Calculator calculator = new Calculator();
     final static int number_of_digits = 8;
 
     public static void main(String[] args) {
@@ -22,8 +19,7 @@ public class UserInterface {
 
         ui.setLayout(new BorderLayout());
 
-        //Visible Display...
-
+        //Visible Display
         JPanel window = new JPanel();
         window.setPreferredSize(new Dimension(600, 100));
         JTextField display;
@@ -32,7 +28,6 @@ public class UserInterface {
         display.setEditable(false);
         Font windowFont = new Font("Arial", Font.PLAIN, 50);
         display.setFont(windowFont);
-
 
 
         //4 Button Panel
@@ -130,8 +125,6 @@ public class UserInterface {
         squareButton.addActionListener(new ListenSquare());
 
 
-
-
         // "=" (SOUTH)
         Dimension bottomButtons = new Dimension(220, 40);
 
@@ -164,8 +157,6 @@ public class UserInterface {
         toggle_panel.add(panel_toggle);
         clear_panel.add(button_clear);
 
-
-
         JPanel bottomPanel = new JPanel();
         bottomPanel.add(clear_panel);
         bottomPanel.add(toggle_panel);
@@ -173,8 +164,6 @@ public class UserInterface {
 
         button_clear.addActionListener(new ListenClear());
         button_toggle.addActionListener(new ListenToggle());
-
-
 
         Font numberFont = new Font("Arial", Font.PLAIN, 40);
         Font operationsFont = new Font("Arial", Font.PLAIN, 30);
@@ -194,10 +183,6 @@ public class UserInterface {
         squareRootButton.setFont(leftButtonsFont);
         squareButton.setFont(leftButtonsFont);
 
-
-
-
-
         ui.add(window, BorderLayout.NORTH);
         ui.add(numberButtonsPanel, BorderLayout.CENTER);
         ui.add(leftPanel, BorderLayout.WEST);
@@ -213,7 +198,6 @@ public class UserInterface {
             numberAfterOperation();
             input += "0";
             calcDisplay.setText(calcDisplay.getText()+" 0");
-            System.out.println(input);
         }
     }
 
@@ -222,7 +206,6 @@ public class UserInterface {
             numberAfterOperation();
             input += "1";
             calcDisplay.setText(calcDisplay.getText()+" 1");
-            System.out.println(input);
         }
     }
 
@@ -231,7 +214,6 @@ public class UserInterface {
             numberAfterOperation();
             input += "2";
             calcDisplay.setText(calcDisplay.getText()+" 2");
-            System.out.println(input);
         }
     }
 
@@ -240,7 +222,6 @@ public class UserInterface {
             numberAfterOperation();
             input += "3";
             calcDisplay.setText(calcDisplay.getText()+" 3");
-            System.out.println(input);
         }
     }
 
@@ -254,7 +235,6 @@ public class UserInterface {
                     enterNum = "YesEnter";
             }
             calcDisplay.setText(calcDisplay.getText()+" +");
-            System.out.println(input);
         }
     }
 
@@ -268,7 +248,6 @@ public class UserInterface {
                     enterNum = "YesEnter";
             }
             calcDisplay.setText(calcDisplay.getText()+" -");
-            System.out.println(input);
         }
     }
 
@@ -282,7 +261,7 @@ public class UserInterface {
                     enterNum = "YesEnter";
             }
             calcDisplay.setText(calcDisplay.getText()+" *");
-            System.out.println(input);
+
         }
     }
 
@@ -297,7 +276,7 @@ public class UserInterface {
 
             }
             calcDisplay.setText(calcDisplay.getText()+" /");
-            System.out.println(input);
+
         }
     }
 
@@ -310,7 +289,6 @@ public class UserInterface {
                     String answerOutput = String.valueOf(calculate.splitInput(input));
                     calcDisplay.setText(answerOutput);
                     input = answerOutput;
-                    System.out.println(input);
                     enterNum = "NoEnter";
                 }
             }
@@ -328,7 +306,6 @@ public class UserInterface {
                     if (!(input.contains("+") || input.contains("-") || input.contains("*")|| input.contains("/"))) {
                         calcDisplay.setText(String.valueOf(calculate.square(input)));
                         input = String.valueOf(calculate.square(input));
-                        System.out.println(input);
                         enterNum = "NoEnter";
                     }
                 }
@@ -345,7 +322,6 @@ public class UserInterface {
                         && input.charAt(input.length() - 1) != '*' && input.charAt(input.length() - 1) != '/'){
                     calcDisplay.setText(String.valueOf(calculate.squareRoot(input)));
                     input = String.valueOf(calculate.squareRoot(input));
-                    System.out.println(calculate.squareRoot(input));
                     enterNum = "NoEnter";
                 }
             }
@@ -362,13 +338,11 @@ public class UserInterface {
                         toggleValue = calculate.quatToDeci(input);
                         calcDisplay.setText(String.valueOf(toggleValue));
                         input = String.valueOf(toggleValue);
-                        System.out.println(input);
                         enterNum = "NoEnter";
                     } else if (toggle.equals("deci")) {
                         toggle = "quat";
                         input = calculate.deciToQuat(toggleValue);
                         calcDisplay.setText(input);
-                        System.out.println(input);
                         enterNum = "NoEnter";
                     }
                 }
@@ -381,9 +355,7 @@ public class UserInterface {
             input = "";
             toggleValue = 0;
             toggle = "quat";
-            //calcDisplay.setText(calcDisplay.getText().replaceAll(String.valueOf(calcDisplay), ""));
             calcDisplay.setText("");
-            System.out.println();
         }
     }
 
@@ -395,7 +367,6 @@ public class UserInterface {
             enterNum = "YesEnter";
             input = calculate.deciToQuat(toggleValue);
             calcDisplay.setText(input);
-            System.out.println(input);
 
         }
     }
