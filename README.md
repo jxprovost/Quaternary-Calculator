@@ -17,6 +17,7 @@ Janardhen = logic side single number operations (square, square root)<br>
 Jaren = UI side (positioning, setup, and development)<br>
 Kyler = UI side (displaying numbers and operators)<br>
 Jacob = UI side (implemented action listeners on buttons, set up buttons to generate input string)<br>
+Nicole = UI side (sqr and sqrt buttons, and classes) <br> 
 
 ## Meetings:
 ### Saturday, September 11 - 9:00pm, Zoom
