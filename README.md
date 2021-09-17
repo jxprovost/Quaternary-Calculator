@@ -13,13 +13,10 @@ result, you will need to hit the clear button before performing any additional c
 
 ## Task Distribution:
 Andrew = logic side basic operations (addition, subtraction, multiplication, division), logic side unit-tests<br>
-Janardhen = logic side single number operations (square, square root)
-
-Jaren = UI side (positioning, setup, and development)
-
-Kyler = UI side (displaying numbers and operators)
-
-Jacob = UI side (implemented action listeners on buttons, set up buttons to generate input string)
+Janardhen = logic side single number operations (square, square root)<br>
+Jaren = UI side (positioning, setup, and development)<br>
+Kyler = UI side (displaying numbers and operators)<br>
+Jacob = UI side (implemented action listeners on buttons, set up buttons to generate input string)<br>
 
 ## Meetings:
 ### Saturday, September 11 - 9:00pm, Zoom
