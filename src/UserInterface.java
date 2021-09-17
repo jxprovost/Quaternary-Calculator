@@ -3,7 +3,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-
 public class UserInterface {
     static String input = "";
     static int toggleValue = 0;
@@ -31,6 +30,8 @@ public class UserInterface {
         window.add(display = new JTextField(number_of_digits));
         calcDisplay = display;
         display.setEditable(false);
+        Font windowFont = new Font("Arial", Font.PLAIN, 50);
+        display.setFont(windowFont);
 
 
 
